@@ -1,9 +1,11 @@
 import {Express, Request, Response} from 'express';
 import {VERSION_1_0} from './config';
 import auth from '../lb-2-features/f-1-auth';
+import cards from '../lb-2-features/f-2-cards';
 
 export const routes = (app: Express) => {
     app.use(VERSION_1_0 + '/auth', auth);
+    app.use(VERSION_1_0 + '/cards', cards);
 
     // ping endpoint
     app.use(VERSION_1_0 + '/ping', (req: Request, res: Response) => {
