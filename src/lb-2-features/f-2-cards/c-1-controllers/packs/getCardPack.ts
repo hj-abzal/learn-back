@@ -4,7 +4,7 @@ import CardsPack, {ICardsPack} from '../../c-2-models/cardsPack';
 import {status500} from '../../../f-1-auth/a-3-helpers/errorStatuses';
 import {resCookie} from '../../../../lb-1-main/cookie';
 
-export const getCardPacks = async (req: Request, res: Response, user: IUser) => {
+export const getCardPack = async (req: Request, res: Response, user: IUser) => {
     const {page, pageCount, sortPacks, packName, min, max, user_id, type} = req.query;
 
     let pageF = page  && +page || 1;
@@ -67,17 +67,17 @@ export const getCardPacks = async (req: Request, res: Response, user: IUser) => 
                                             tokenDeathTime: user.tokenDeathTime
                                         })
                                 })
-                                .catch( (e) => status500(res, e, user, 'getCardPacks/CardsPack.find'))
+                                .catch( (e) => status500(res, e, user, 'getCardPack/CardsPack.find'))
 
 
                         })
                         .catch((e) => status500(res, e, user, 'getCardPack/CardsPack.count'))
 
                 })
-                .catch((e) => status500(res, e, user, 'getCardPacks/CardsPack.findOne/max'))
+                .catch((e) => status500(res, e, user, 'getCardPack/CardsPack.findOne/max'))
 
         })
-        .catch((e) => status500(res, e, user, 'getCardPacks/CardsPack.findOne/min'))
+        .catch((e) => status500(res, e, user, 'getCardPack/CardsPack.findOne/min'))
 
 
 }
